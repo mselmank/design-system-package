@@ -1,22 +1,3 @@
-# Fintual Design System 🚀
-
-Sistema de diseño *headless* y cross-platform para React (Web) y React Native (Mobile), construido con TypeScript en un Monorepo.
-
-## 🛠️ Inicio Rápido
-
-Instala las dependencias desde la raíz:
-
-```bash
-pnpm install
-```
-
-## 🏃‍♂️ Ejecutar Proyectos
-
-### Web 🖥️
-Aplicación Vite + React.
-
-```bash
-cd apps/web
 pnpm dev
 ```
 > Abre `http://localhost:5173`

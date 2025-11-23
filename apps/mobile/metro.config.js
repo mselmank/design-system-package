@@ -24,7 +24,20 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
             type: 'sourceFile',
         };
     }
+    // Resolve the new package name to the workspace location
+    if (moduleName === 'design-system-package') {
+        return {
+            filePath: require.resolve(path.resolve(workspaceRoot, 'packages/design-system/src/index.ts')),
+            type: 'sourceFile',
+        };
+    }
     return context.resolveRequest(context, moduleName, platform);
+};
+
+// Update extraNodeModules just in case, though resolveRequest handles it
+config.resolver.extraNodeModules = {
+    ...config.resolver.extraNodeModules,
+    'design-system-package': path.resolve(workspaceRoot, 'packages/design-system'),
 };
 
 module.exports = config;

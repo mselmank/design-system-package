@@ -1,4 +1,4 @@
-import { ThemeProvider, Box, Text, useTheme } from 'fintual-design-system';
+import { ThemeProvider, Box, Text, useTheme } from 'design-system-package';
 
 const Content = () => {
   const { toggleTheme, theme } = useTheme();

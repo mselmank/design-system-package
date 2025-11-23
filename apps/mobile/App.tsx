@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View, Button } from 'react-native';
-import { ThemeProvider, Box, Text, useTheme } from 'fintual-design-system';
+import { ThemeProvider, Box, Text, useTheme } from 'design-system-package';
 
 const Content = () => {
   const { toggleTheme, theme } = useTheme();

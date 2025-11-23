@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "fintual-design-system": "workspace:*",
+    "design-system-package": "workspace:*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

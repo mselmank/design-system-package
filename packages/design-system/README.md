@@ -1,43 +1,134 @@
-# Fintual Design System
+# 🎨 Fintual Design System
 
-Cross-platform design system for React and React Native applications, featuring a unified component library with full dark mode support.
+> Cross-platform components for React & React Native
 
-## Installation
+[![npm version](https://img.shields.io/npm/v/@mselmank/design-system-package.svg)](https://www.npmjs.com/package/@mselmank/design-system-package)
+
+## 📦 Installation
 
 ```bash
 npm install @mselmank/design-system-package
-# or
-pnpm add @mselmank/design-system-package
 ```
 
-## Quick Start
-
-### Web (React)
+## 🚀 Quick Start
 
 ```tsx
-import { ThemeProvider, Box, Text, Button, useTheme } from '@mselmank/design-system-package';
+import { ThemeProvider, Box, Text, Button } from '@mselmank/design-system-package';
 
 function App() {
   return (
     <ThemeProvider>
-      <Content />
+      <Box padding="lg" backgroundColor="background">
+        <Text variant="h1" color="textDefault">Hello World</Text>
+        <Button label="Click me" variant="primary" />
+      </Box>
     </ThemeProvider>
-  );
-}
-
-function Content() {
-  const { toggleTheme } = useTheme();
-  
-  return (
-    <Box padding="lg" backgroundColor="background">
-      <Text variant="h1" color="textDefault">Hello World</Text>
-      <Button label="Toggle Theme" variant="primary" onPress={toggleTheme} />
-    </Box>
   );
 }
 ```
 
-### Mobile (React Native)
+## 📚 Components
+
+### 🎭 ThemeProvider
+
+Wrap your app to enable theming and dark mode.
+
+```tsx
+<ThemeProvider>
+  <App />
+</ThemeProvider>
+```
+
+**Hook:**
+```tsx
+const { theme, toggleTheme } = useTheme();
+// theme.variant: 'light' | 'dark'
+```
+
+---
+
+### 📦 Box
+
+Layout container with spacing and styling.
+
+**Props:**
+- `padding?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`
+- `margin?: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'`
+- `backgroundColor?: string` - Any color from theme
+- `elevation?: 'none' | 'z1' | 'z2' | 'z3'`
+- `flexDirection?: 'row' | 'column'`
+- `display?: 'flex' | 'none'`
+
+**Example:**
+```tsx
+<Box padding="md" backgroundColor="surface" elevation="z2">
+  <Text>Content here</Text>
+</Box>
+```
+
+---
+
+### 📝 Text
+
+Typography with semantic variants.
+
+**Props:**
+- `variant: 'h1' | 'bodyL'` - Text style
+- `color?: string` - Any color from theme
+
+**Colors:**
+- `textDefault` - Primary text
+- `textSecondary` - Muted text
+- `textSuccess` - Success state
+- `textError` - Error state
+- `textDisabled` - Disabled state
+- `textContrast` - High contrast
+
+**Example:**
+```tsx
+<Text variant="h1" color="textDefault">Heading</Text>
+<Text variant="bodyL" color="textSecondary">Body text</Text>
+```
+
+---
+
+### 🔘 Button
+
+Interactive buttons with multiple styles.
+
+**Props:**
+- `label: string` - Button text (required)
+- `variant?: 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'`
+- `shade?: 'light' | 'main' | 'dark'`
+- `onPress?: () => void` - Click handler
+- `disabled?: boolean`
+
+**Example:**
+```tsx
+<Button 
+  label="Save Changes" 
+  variant="primary" 
+  shade="main"
+  onPress={() => console.log('Clicked!')} 
+/>
+```
+
+## 🎨 Theme Colors
+
+Each variant has 3 shades:
+
+| Variant | Usage |
+|---------|-------|
+| **primary** | Main brand actions |
+| **secondary** | Secondary actions |
+| **error** | Destructive actions |
+| **warning** | Warning states |
+| **info** | Informational |
+| **success** | Success states |
+
+## 📱 React Native
+
+Same API, works out of the box:
 
 ```tsx
 import { ThemeProvider, Box, Text, Button } from '@mselmank/design-system-package';
@@ -48,9 +139,9 @@ export default function App() {
     <ThemeProvider>
       <View style={{ flex: 1 }}>
         <ScrollView>
-          <Box padding="lg" backgroundColor="background">
-            <Text variant="h1" color="textDefault">Hello World</Text>
-            <Button label="Click me" variant="primary" />
+          <Box padding="lg">
+            <Text variant="h1" color="textDefault">Hello Mobile</Text>
+            <Button label="Press me" variant="primary" />
           </Box>
         </ScrollView>
       </View>
@@ -59,46 +150,47 @@ export default function App() {
 }
 ```
 
-## Components
-
-### Box
-Layout container with spacing and styling.
-
-**Props:** `padding`, `margin`, `backgroundColor`, `elevation`, `flexDirection`, `display`
-
-### Text
-Typography component with variants.
-
-**Props:** `variant` ('h1' | 'bodyL'), `color`
-
-### Button
-Button with semantic variants and shades.
-
-**Props:** `label`, `variant`, `shade`, `onPress`, `disabled`
-
-**Variants:** primary, secondary, error, warning, info, success  
-**Shades:** light, main, dark
-
-### ThemeProvider
-Wrap your app to enable theming.
-
-### useTheme
-Hook to access theme and toggle dark mode.
+## 🌗 Dark Mode
 
 ```tsx
-const { theme, toggleTheme } = useTheme();
+import { useTheme } from '@mselmank/design-system-package';
+
+function ThemeToggle() {
+  const { toggleTheme, theme } = useTheme();
+  
+  return (
+    <Button 
+      label={`Mode: ${theme.variant}`} 
+      onPress={toggleTheme} 
+    />
+  );
+}
 ```
 
-## Color Palette
+## 📏 Spacing Scale
 
-6 semantic variants (primary, secondary, error, warning, info, success), each with 3 shades (light, main, dark).
+| Token | Value |
+|-------|-------|
+| `none` | 0px |
+| `xs` | 4px |
+| `sm` | 8px |
+| `md` | 16px |
+| `lg` | 24px |
+| `xl` | 32px |
+| `2xl` | 48px |
 
-Text colors: textDefault, textSecondary, textSuccess, textError, textDisabled, textContrast
+## 🔧 TypeScript
 
-## Publishing
+Fully typed out of the box:
 
-See [PUBLISHING.md](./PUBLISHING.md) for npm publishing instructions.
+```tsx
+import type { 
+  ButtonVariant, 
+  ButtonShade,
+  ColorTokens 
+} from '@mselmank/design-system-package';
+```
 
-## License
+## 📄 License
 
-MIT
+MIT © [Fintual](https://github.com/mselmank/fintual-ds-monorepo)

@@ -1,6 +1,6 @@
 {
     "name": "@mselmank/design-system-package",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Cross-platform design system for React and React Native",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",

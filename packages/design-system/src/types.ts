@@ -4,44 +4,53 @@ export type SpacingToken = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export type ElevationToken = 'none' | 'z1' | 'z2' | 'z3';
 export type ThemeVariant = 'light' | 'dark';
 
-// 1. Color Tokens
 export interface ColorTokens {
-    primary: string;      // Color principal de la marca
-    background: string;   // Fondo principal de la app
-    surface: string;      // Fondo para Cards, Box, etc.
-    textDefault: string;  // Color de texto principal
-    textContrast: string; // Color de texto en fondos primarios
+    primary: string;
+    background: string;
+    surface: string;
+    success: string;
+    error: string;
+    textDefault: string;
+    textContrast: string;
+    textSecondary: string;
+    textDisabled: string;
+    textSuccess: string;
+    textError: string;
 }
 
-// 2. Estructura Completa del Tema
 export interface DesignSystemTheme {
     variant: ThemeVariant;
     colors: ColorTokens;
     spacing: Record<SpacingToken, number>;
-    elevationMapping: Record<ElevationToken, string>; // Added for web shadow mapping
+    elevationMapping: Record<ElevationToken, string>;
     typography: {
         h1: { fontSize: number; fontWeight: string; lineHeight: number };
         bodyL: { fontSize: number; fontWeight: string; lineHeight: number };
-        // Add more as needed
     };
 }
 
-// 3. Propiedades Headless para Tipografía (PoC)
 export interface TypographyProps {
     variant: keyof DesignSystemTheme['typography'];
     color?: keyof ColorTokens;
     children: React.ReactNode;
-    // Common props can go here
 }
 
-// Box Props
 export interface BoxProps {
     padding?: SpacingToken;
     margin?: SpacingToken;
     backgroundColor?: keyof ColorTokens;
     elevation?: ElevationToken;
     children?: React.ReactNode;
-    // Add flex props as needed for the POC
     flexDirection?: 'row' | 'column';
     display?: 'flex' | 'none';
+}
+
+// Button Props
+export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'error';
+
+export interface ButtonProps {
+    variant?: ButtonVariant;
+    label: string;
+    onPress?: () => void;
+    disabled?: boolean;
 }

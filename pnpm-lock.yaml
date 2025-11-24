@@ -20,7 +20,7 @@ importers:
 
   apps/mobile:
     dependencies:
-      design-system-package:
+      '@mselmank/design-system-package':
         specifier: workspace:*
         version: link:../../packages/design-system
       expo:
@@ -45,7 +45,7 @@ importers:
 
   apps/web:
     dependencies:
-      design-system-package:
+      '@mselmank/design-system-package':
         specifier: workspace:*
         version: link:../../packages/design-system
       react:

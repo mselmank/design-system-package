@@ -5,11 +5,11 @@ Sistema de diseño unificado para React (Web) y React Native (Mobile).
 ## 📦 Instalación
 
 ```bash
-npm install design-system-package
+npm install @mselmank/design-system-package
 # o
-pnpm add design-system-package
+pnpm add @mselmank/design-system-package
 # o
-yarn add design-system-package
+yarn add @mselmank/design-system-package
 ```
 
 ## ⚙️ Configuración
@@ -17,7 +17,7 @@ yarn add design-system-package
 Envuelve tu aplicación con el `ThemeProvider` para habilitar el sistema de temas (Light/Dark).
 
 ```tsx
-import { ThemeProvider } from 'design-system-package';
+import { ThemeProvider } from '@mselmank/design-system-package';
 
 export default function App() {
   return (

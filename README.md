@@ -1,32 +1,6 @@
 pnpm dev
 ```
 > Abre `http://localhost:5173`
-
-### Mobile 📱
-Aplicación Expo + React Native.
-
-```bash
-cd apps/mobile
-pnpm start --clear
-```
-> Escanea el QR con **Expo Go** o presiona `a` (Android) / `i` (iOS).
-
----
-
-## 🧩 Componentes
-
-### `<Box />` 📦
-Contenedor flexible polimórfico (`div` en Web, `View` en Mobile).
-
-**Props:**
-- `padding`, `margin`: Tokens de espaciado (`xs`, `sm`, `md`, etc.).
-- `backgroundColor`: Token de color (`primary`, `surface`, etc.).
-- `elevation`: Sombra (`z1`, `z2`, `z3`).
-- `flexDirection`, `display`.
-
-```tsx
-<Box padding="md" backgroundColor="surface" elevation="z1">
-  {/* contenido */}
 </Box>
 ```
 

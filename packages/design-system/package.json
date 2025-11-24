@@ -1,28 +1,54 @@
 {
     "name": "@mselmank/design-system-package",
     "version": "1.0.2",
-    "main": "dist/index.js",
-    "module": "dist/index.esm.js",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist"
-    ],
+    "description": "Cross-platform design system for React and React Native",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/index.d.ts",
             "react-native": "./dist/index.native.js",
-            "default": "./dist/index.js"
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
         }
     },
+    "files": [
+        "dist",
+        "README.md"
+    ],
     "scripts": {
-        "build": "tsc"
+        "build": "tsup",
+        "clean": "rm -rf dist",
+        "prepublishOnly": "pnpm run clean && pnpm run build"
+    },
+    "keywords": [
+        "design-system",
+        "react",
+        "react-native",
+        "components",
+        "ui",
+        "cross-platform",
+        "fintual"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mselmank/fintual-ds-monorepo",
+        "directory": "packages/design-system"
     },
     "peerDependencies": {
-        "react": "*",
-        "react-native": "*"
+        "react": ">=18.0.0",
+        "react-native": ">=0.70.0"
+    },
+    "peerDependenciesMeta": {
+        "react-native": {
+            "optional": true
+        }
     },
     "devDependencies": {
         "typescript": "^5.0.0",
         "@types/react": "^18.0.0",
-        "@types/react-native": "^0.72.0"
+        "@types/react-native": "^0.72.0",
+        "tsup": "^8.5.1"
     }
 }

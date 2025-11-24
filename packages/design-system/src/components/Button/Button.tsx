@@ -11,14 +11,20 @@ export const Button: React.FC<ButtonProps> = (props) => {
     const webStyles: React.CSSProperties = {
         backgroundColor: styles.backgroundColor,
         color: styles.color,
-        padding: `${styles.padding}px`,
-        borderRadius: `${styles.borderRadius}px`,
+        padding: styles.padding,
+        borderRadius: styles.borderRadius,
         opacity: styles.opacity,
-        border: props.variant === 'secondary' ? `1px solid ${styles.color}` : 'none',
+        border: 'none',
         cursor: props.disabled ? 'not-allowed' : 'pointer',
-        fontSize: '16px',
-        fontWeight: '600',
+        fontSize: '14px', // Tailwind text-sm/base
+        fontWeight: 600, // Tailwind font-semibold
         transition: 'all 0.2s ease',
+        boxShadow: styles.boxShadow,
+        textTransform: 'none', // Modern look usually avoids uppercase
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minWidth: '100px',
     };
 
     return (

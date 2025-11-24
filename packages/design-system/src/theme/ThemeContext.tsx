@@ -2,21 +2,50 @@
 import React, { createContext, useState, useContext, useCallback } from 'react';
 import { DesignSystemTheme, ThemeVariant } from '../types';
 
-// Definir temas concretos (ejemplo conceptual)
+// Definir temas concretos
 const lightTheme: DesignSystemTheme = {
     variant: 'light',
     colors: {
-        primary: '#226952',
         background: '#FFFFFF',
         surface: '#F9F9F9',
-        success: '#E8F5E9', // Light Green
-        error: '#FFEBEE',   // Light Red
+
+        // Primary (Blue)
+        primaryLight: '#A6D4FA',
+        primaryMain: '#90CAF9',
+        primaryDark: '#648DAE',
+
+        // Secondary (Pink)
+        secondaryLight: '#F6A5C0',
+        secondaryMain: '#F48FB1',
+        secondaryDark: '#AA647B',
+
+        // Error (Red)
+        errorLight: '#E57373',
+        errorMain: '#F44336',
+        errorDark: '#D32F2F',
+
+        // Warning (Orange)
+        warningLight: '#FFB74D',
+        warningMain: '#FF9800',
+        warningDark: '#F57C00',
+
+        // Info (Light Blue)
+        infoLight: '#64B5F6',
+        infoMain: '#2196F3',
+        infoDark: '#1976D2',
+
+        // Success (Green)
+        successLight: '#81C784',
+        successMain: '#4CAF50',
+        successDark: '#388E3C',
+
+        // Text
         textDefault: '#000000',
         textContrast: '#FFFFFF',
         textSecondary: '#666666',
         textDisabled: '#999999',
-        textSuccess: '#226952',
-        textError: '#D32F2F'
+        textSuccess: '#2E7D32',
+        textError: '#C62828'
     },
     spacing: { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, '2xl': 48 },
     elevationMapping: {
@@ -34,20 +63,49 @@ const lightTheme: DesignSystemTheme = {
 const darkTheme: DesignSystemTheme = {
     variant: 'dark',
     colors: {
-        primary: '#69B099',
-        background: '#1A1A1A',
-        surface: '#2C2C2C',
-        success: '#1B5E20', // Dark Green
-        error: '#B71C1C',   // Dark Red
+        background: '#121212',
+        surface: '#1E1E1E',
+
+        // Primary (Blue) - Slightly desaturated for dark mode
+        primaryLight: '#90CAF9',
+        primaryMain: '#64B5F6',
+        primaryDark: '#42A5F5',
+
+        // Secondary (Pink)
+        secondaryLight: '#F48FB1',
+        secondaryMain: '#F06292',
+        secondaryDark: '#EC407A',
+
+        // Error (Red)
+        errorLight: '#EF5350',
+        errorMain: '#E57373',
+        errorDark: '#EF9A9A',
+
+        // Warning (Orange)
+        warningLight: '#FFB74D',
+        warningMain: '#FFA726',
+        warningDark: '#FF9800',
+
+        // Info (Light Blue)
+        infoLight: '#64B5F6',
+        infoMain: '#4FC3F7',
+        infoDark: '#29B6F6',
+
+        // Success (Green)
+        successLight: '#81C784',
+        successMain: '#66BB6A',
+        successDark: '#4CAF50',
+
+        // Text
         textDefault: '#FFFFFF',
         textContrast: '#000000',
-        textSecondary: '#AAAAAA',
+        textSecondary: '#B0B0B0',
         textDisabled: '#666666',
-        textSuccess: '#69B099',
-        textError: '#EF5350'
+        textSuccess: '#81C784',
+        textError: '#E57373'
     },
     spacing: lightTheme.spacing,
-    elevationMapping: lightTheme.elevationMapping, // Shadows might need adjustment for dark mode in real app
+    elevationMapping: lightTheme.elevationMapping,
     typography: lightTheme.typography
 };
 

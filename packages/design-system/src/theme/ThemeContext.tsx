@@ -5,7 +5,19 @@ import { DesignSystemTheme, ThemeVariant } from '../types';
 // Definir temas concretos (ejemplo conceptual)
 const lightTheme: DesignSystemTheme = {
     variant: 'light',
-    colors: { primary: '#226952', background: '#FFFFFF', surface: '#F9F9F9', textDefault: '#000000', textContrast: '#FFFFFF' },
+    colors: {
+        primary: '#226952',
+        background: '#FFFFFF',
+        surface: '#F9F9F9',
+        success: '#E8F5E9', // Light Green
+        error: '#FFEBEE',   // Light Red
+        textDefault: '#000000',
+        textContrast: '#FFFFFF',
+        textSecondary: '#666666',
+        textDisabled: '#999999',
+        textSuccess: '#226952',
+        textError: '#D32F2F'
+    },
     spacing: { none: 0, xs: 4, sm: 8, md: 16, lg: 24, xl: 32, '2xl': 48 },
     elevationMapping: {
         none: 'none',
@@ -21,7 +33,19 @@ const lightTheme: DesignSystemTheme = {
 
 const darkTheme: DesignSystemTheme = {
     variant: 'dark',
-    colors: { primary: '#69B099', background: '#1A1A1A', surface: '#2C2C2C', textDefault: '#FFFFFF', textContrast: '#000000' },
+    colors: {
+        primary: '#69B099',
+        background: '#1A1A1A',
+        surface: '#2C2C2C',
+        success: '#1B5E20', // Dark Green
+        error: '#B71C1C',   // Dark Red
+        textDefault: '#FFFFFF',
+        textContrast: '#000000',
+        textSecondary: '#AAAAAA',
+        textDisabled: '#666666',
+        textSuccess: '#69B099',
+        textError: '#EF5350'
+    },
     spacing: lightTheme.spacing,
     elevationMapping: lightTheme.elevationMapping, // Shadows might need adjustment for dark mode in real app
     typography: lightTheme.typography

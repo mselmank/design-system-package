@@ -1,76 +1,104 @@
-# Design System Package 🚀
+# Fintual Design System
 
-Sistema de diseño unificado para React (Web) y React Native (Mobile).
+Cross-platform design system for React and React Native applications, featuring a unified component library with full dark mode support.
 
-## 📦 Instalación
+## Installation
 
 ```bash
 npm install @mselmank/design-system-package
-# o
+# or
 pnpm add @mselmank/design-system-package
-# o
-yarn add @mselmank/design-system-package
 ```
 
-## ⚙️ Configuración
+## Quick Start
 
-Envuelve tu aplicación con el `ThemeProvider` para habilitar el sistema de temas (Light/Dark).
+### Web (React)
 
 ```tsx
-import { ThemeProvider } from '@mselmank/design-system-package';
+import { ThemeProvider, Box, Text, Button, useTheme } from '@mselmank/design-system-package';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Content />
+    </ThemeProvider>
+  );
+}
+
+function Content() {
+  const { toggleTheme } = useTheme();
+  
+  return (
+    <Box padding="lg" backgroundColor="background">
+      <Text variant="h1" color="textDefault">Hello World</Text>
+      <Button label="Toggle Theme" variant="primary" onPress={toggleTheme} />
+    </Box>
+  );
+}
+```
+
+### Mobile (React Native)
+
+```tsx
+import { ThemeProvider, Box, Text, Button } from '@mselmank/design-system-package';
+import { View, ScrollView } from 'react-native';
 
 export default function App() {
   return (
     <ThemeProvider>
-      <TuApp />
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <Box padding="lg" backgroundColor="background">
+            <Text variant="h1" color="textDefault">Hello World</Text>
+            <Button label="Click me" variant="primary" />
+          </Box>
+        </ScrollView>
+      </View>
     </ThemeProvider>
   );
 }
 ```
 
-## 🧩 Componentes
+## Components
 
-### `<Box />`
-Contenedor principal para layout y espaciado. Se renderiza como `div` en Web y `View` en Mobile.
+### Box
+Layout container with spacing and styling.
 
-| Prop | Tipo | Descripción |
-|------|------|-------------|
-| `padding` | `SpacingToken` | Espaciado interno (`xs`, `sm`, `md`, `lg`, `xl`) |
-| `margin` | `SpacingToken` | Espaciado externo (`xs`, `sm`, `md`, `lg`, `xl`) |
-| `backgroundColor` | `ColorToken` | Color de fondo (`primary`, `surface`, `background`) |
-| `elevation` | `ElevationToken` | Sombra/Elevación (`z1`, `z2`, `z3`) |
-| `flexDirection` | `'row' \| 'column'` | Dirección del layout flex |
+**Props:** `padding`, `margin`, `backgroundColor`, `elevation`, `flexDirection`, `display`
 
-**Ejemplo:**
-```tsx
-<Box padding="md" backgroundColor="surface" elevation="z1">
-  <Contenido />
-</Box>
-```
+### Text
+Typography component with variants.
 
-### `<Text />`
-Componente para tipografía. Se renderiza como etiquetas semánticas en Web (`h1`, `p`) y `Text` en Mobile.
+**Props:** `variant` ('h1' | 'bodyL'), `color`
 
-| Prop | Tipo | Descripción |
-|------|------|-------------|
-| `variant` | `'h1' \| 'bodyL'` | Estilo tipográfico a aplicar |
-| `color` | `ColorToken` | Color del texto (`primary`, `textDefault`, `textContrast`) |
+### Button
+Button with semantic variants and shades.
 
-**Ejemplo:**
-```tsx
-<Text variant="h1" color="primary">Hola Fintual</Text>
-```
+**Props:** `label`, `variant`, `shade`, `onPress`, `disabled`
 
-### Hook `useTheme`
-Para acceder al tema actual o cambiar entre modo claro y oscuro.
+**Variants:** primary, secondary, error, warning, info, success  
+**Shades:** light, main, dark
+
+### ThemeProvider
+Wrap your app to enable theming.
+
+### useTheme
+Hook to access theme and toggle dark mode.
 
 ```tsx
 const { theme, toggleTheme } = useTheme();
-
-console.log(theme.variant); // 'light' | 'dark'
 ```
 
-## 🎨 Tokens Disponibles
+## Color Palette
 
-- **Colores:** `primary`, `background`, `surface`, `textDefault`, `textContrast`
-- **Espaciado:** `none`, `xs` (4px), `sm` (8px), `md` (16px), `lg` (24px), `xl` (32px), `2xl` (48px)
+6 semantic variants (primary, secondary, error, warning, info, success), each with 3 shades (light, main, dark).
+
+Text colors: textDefault, textSecondary, textSuccess, textError, textDisabled, textContrast
+
+## Publishing
+
+See [PUBLISHING.md](./PUBLISHING.md) for npm publishing instructions.
+
+## License
+
+MIT

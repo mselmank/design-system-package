@@ -10,7 +10,7 @@ export const Text: React.FC<TypographyProps> = ({ children, variant, ...props })
     const styles = mapTypographyPropsToStyles({ variant, ...props }, theme);
 
     return (
-        <RNText style={styles as any}>
+        <RNText style={[styles, props.style]}>
             {children}
         </RNText>
     );

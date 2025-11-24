@@ -5,11 +5,41 @@ export type ElevationToken = 'none' | 'z1' | 'z2' | 'z3';
 export type ThemeVariant = 'light' | 'dark';
 
 export interface ColorTokens {
-    primary: string;
+    // Backgrounds
     background: string;
     surface: string;
-    success: string;
-    error: string;
+
+    // Primary
+    primaryLight: string;
+    primaryMain: string;
+    primaryDark: string;
+
+    // Secondary
+    secondaryLight: string;
+    secondaryMain: string;
+    secondaryDark: string;
+
+    // Error
+    errorLight: string;
+    errorMain: string;
+    errorDark: string;
+
+    // Warning
+    warningLight: string;
+    warningMain: string;
+    warningDark: string;
+
+    // Info
+    infoLight: string;
+    infoMain: string;
+    infoDark: string;
+
+    // Success
+    successLight: string;
+    successMain: string;
+    successDark: string;
+
+    // Text
     textDefault: string;
     textContrast: string;
     textSecondary: string;
@@ -33,6 +63,7 @@ export interface TypographyProps {
     variant: keyof DesignSystemTheme['typography'];
     color?: keyof ColorTokens;
     children: React.ReactNode;
+    style?: any;
 }
 
 export interface BoxProps {
@@ -46,10 +77,12 @@ export interface BoxProps {
 }
 
 // Button Props
-export type ButtonVariant = 'primary' | 'secondary' | 'success' | 'error';
+export type ButtonVariant = 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success';
+export type ButtonShade = 'light' | 'main' | 'dark';
 
 export interface ButtonProps {
     variant?: ButtonVariant;
+    shade?: ButtonShade;
     label: string;
     onPress?: () => void;
     disabled?: boolean;

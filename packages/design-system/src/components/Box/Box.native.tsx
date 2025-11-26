@@ -17,18 +17,17 @@ export const Box: React.FC<BoxProps> = ({ children, ...props }) => {
     const { theme } = useTheme();
     const calculatedStyles = mapBoxPropsToStyles(props, theme);
 
-    const elevationStyle = calculatedStyles.elevationToken
-        ? getNativeElevationStyles(calculatedStyles.elevationToken)
+    const { elevationToken, display, ...otherStyles } = calculatedStyles;
+
+    const elevationStyle = elevationToken
+        ? getNativeElevationStyles(elevationToken)
         : {};
 
     // Extract only valid ViewStyle props
     const viewStyles: ViewStyle = {
-        padding: calculatedStyles.padding,
-        margin: calculatedStyles.margin,
-        backgroundColor: calculatedStyles.backgroundColor,
-        flexDirection: calculatedStyles.flexDirection,
-        display: calculatedStyles.display === 'none' ? 'none' : 'flex', // React Native display supports 'none' | 'flex'
-    };
+        ...otherStyles,
+        display: display === 'none' ? 'none' : 'flex', // React Native display supports 'none' | 'flex'
+    } as ViewStyle;
 
     return (
         <View style={[viewStyles, elevationStyle]}>

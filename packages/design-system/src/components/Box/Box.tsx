@@ -13,14 +13,14 @@ export const Box: React.FC<BoxProps> = ({ children, ...props }) => {
         ? { boxShadow: theme.elevationMapping[styles.elevationToken] }
         : {};
 
+    const { elevationToken, ...otherStyles } = styles;
+
     const finalStyle: React.CSSProperties = {
-        padding: styles.padding,
-        margin: styles.margin,
-        backgroundColor: styles.backgroundColor,
-        display: styles.display,
-        flexDirection: styles.flexDirection,
+        ...otherStyles,
         ...elevationStyle,
-    };
+        // Ensure display is valid for web if not specified (default to block or flex depending on usage, but div is block)
+        // If display is not passed, it will be undefined, so div defaults to block.
+    } as React.CSSProperties;
 
     return (
         <div style={finalStyle}>

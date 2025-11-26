@@ -55,8 +55,8 @@ const lightTheme: DesignSystemTheme = {
         z3: '0px 8px 16px rgba(0,0,0,0.14)'
     },
     typography: {
-        h1: { fontSize: 32, fontWeight: '700', lineHeight: 40 },
-        bodyL: { fontSize: 16, fontWeight: '400', lineHeight: 24 }
+        h1: { fontSize: 24, fontWeight: '700', lineHeight: 32 },
+        bodyL: { fontSize: 14, fontWeight: '400', lineHeight: 20 }
     }
 };
 

@@ -67,13 +67,66 @@ export interface TypographyProps {
 }
 
 export interface BoxProps {
+    // Spacing
     padding?: SpacingToken;
     margin?: SpacingToken;
+    px?: SpacingToken;
+    py?: SpacingToken;
+    pt?: SpacingToken;
+    pb?: SpacingToken;
+    pl?: SpacingToken;
+    pr?: SpacingToken;
+    mx?: SpacingToken;
+    my?: SpacingToken;
+    mt?: SpacingToken;
+    mb?: SpacingToken;
+    ml?: SpacingToken;
+    mr?: SpacingToken;
+
+    // Layout
+    width?: string | number;
+    height?: string | number;
+    minWidth?: string | number;
+    minHeight?: string | number;
+    maxWidth?: string | number;
+    maxHeight?: string | number;
+    display?: 'flex' | 'none' | 'block' | 'inline-block' | 'grid';
+
+    // Flexbox
+    flexDirection?: 'row' | 'column' | 'row-reverse' | 'column-reverse';
+    flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+    justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+    alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
+    alignContent?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+    alignSelf?: 'auto' | 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline';
+    flex?: number | string;
+    flexGrow?: number;
+    flexShrink?: number;
+    gap?: number | string;
+    rowGap?: number | string;
+    columnGap?: number | string;
+
+    // Positioning
+    position?: 'absolute' | 'relative' | 'fixed' | 'sticky';
+    top?: number | string;
+    bottom?: number | string;
+    left?: number | string;
+    right?: number | string;
+    zIndex?: number;
+
+    // Visual
     backgroundColor?: keyof ColorTokens;
     elevation?: ElevationToken;
+    opacity?: number;
+    overflow?: 'visible' | 'hidden' | 'scroll' | 'auto';
+
+    // Borders
+    borderWidth?: number;
+    borderColor?: keyof ColorTokens;
+    borderRadius?: number | 'sm' | 'md' | 'lg' | 'full';
+
     children?: React.ReactNode;
-    flexDirection?: 'row' | 'column';
-    display?: 'flex' | 'none';
+    style?: any; // Escape hatch
 }
 
 // Button Props

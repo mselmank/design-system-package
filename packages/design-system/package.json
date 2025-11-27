@@ -1,6 +1,6 @@
 {
     "name": "@mselmank/design-system-package",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Cross-platform design system for React and React Native",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -34,8 +34,12 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/mselmank/fintual-ds-monorepo",
+        "url": "https://github.com/mselmank/design-system-package",
         "directory": "packages/design-system"
+    },
+    "homepage": "https://mselmank.github.io/design-system-package/",
+    "bugs": {
+        "url": "https://github.com/mselmank/design-system-package/issues"
     },
     "peerDependencies": {
         "react": ">=18.0.0",

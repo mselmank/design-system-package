@@ -1,4 +1,4 @@
-# 🎨 Fintual Design System
+# 🎨 Design System Package
 
 > Cross-platform components for React & React Native
 

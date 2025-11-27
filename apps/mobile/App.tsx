@@ -3,7 +3,6 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider, Box, Text, useTheme, Button, type ButtonVariant, type ColorTokens } from '@mselmank/design-system-package';
 
-// Section component for consistent styling
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <View style={{ marginBottom: 24, padding: 16, backgroundColor: 'rgba(128, 128, 128, 0.1)', borderRadius: 12 }}>
     <Text variant="h1" color="textDefault" style={{ marginBottom: 8 }}>{title}</Text>
@@ -16,7 +15,6 @@ const Content = () => {
   const buttonVariants: ButtonVariant[] = ['primary', 'secondary', 'error', 'warning', 'info', 'success'];
   const textColors: Array<keyof ColorTokens> = ['textDefault', 'textSecondary', 'textSuccess', 'textError', 'textDisabled'];
 
-  // Page container style using theme colors
   const containerStyle = {
     backgroundColor: theme.colors.background,
   };
@@ -24,7 +22,6 @@ const Content = () => {
   return (
     <SafeAreaView style={[styles.safeArea, containerStyle]}>
       <ScrollView contentContainerStyle={styles.scrollContent}>
-        {/* Header Section */}
         <View style={styles.header}>
           <View style={styles.headerText}>
             <Text variant="h1" color="textDefault" style={{ fontSize: 24, marginBottom: 4 }}>
@@ -43,13 +40,11 @@ const Content = () => {
           </View>
         </View>
 
-        {/* Layout Section */}
         <Section title="Layout Components (Box)">
           <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
             Box with padding, background, and elevation
           </Text>
 
-          {/* Actual DS Component Usage */}
           <Box padding="md" backgroundColor="surface" elevation="z1" borderRadius="md" mb="md">
             <Text variant="bodyL" color="textDefault">
               I am a Box with padding, surface background, and z1 elevation.
@@ -60,7 +55,6 @@ const Content = () => {
             Flexbox layout with gap
           </Text>
 
-          {/* Flexbox Example */}
           <Box display="flex" flexDirection="row" gap={12}>
             <Box padding="md" backgroundColor="primaryLight" borderRadius="sm" flex={1}>
               <Text variant="bodyL" color="textDefault">Flex Item 1</Text>
@@ -71,7 +65,6 @@ const Content = () => {
           </Box>
         </Section>
 
-        {/* Typography Section */}
         <Section title="Typography (Text)">
           <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
             Text color variants
@@ -90,7 +83,6 @@ const Content = () => {
           </View>
         </Section>
 
-        {/* Buttons Section */}
         <Section title="Buttons">
           <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
             All variants and shades

@@ -1,4 +1,3 @@
-// packages/design-system/src/components/Box/mapStyles.ts
 import { BoxProps, DesignSystemTheme, SpacingToken } from '../../types';
 
 export const mapBoxPropsToStyles = (props: BoxProps, theme: DesignSystemTheme) => {
@@ -19,11 +18,9 @@ export const mapBoxPropsToStyles = (props: BoxProps, theme: DesignSystemTheme) =
     const backgroundColor = props.backgroundColor ? theme.colors[props.backgroundColor] : undefined;
     const borderColor = props.borderColor ? theme.colors[props.borderColor] : undefined;
 
-    // Elevation is handled differently in Web vs Native, so we return the token
     const elevationToken = props.elevation;
 
     return {
-        // Spacing
         paddingTop: pt,
         paddingBottom: pb,
         paddingLeft: pl,
@@ -32,8 +29,6 @@ export const mapBoxPropsToStyles = (props: BoxProps, theme: DesignSystemTheme) =
         marginBottom: mb,
         marginLeft: ml,
         marginRight: mr,
-
-        // Layout
         width: props.width,
         height: props.height,
         minWidth: props.minWidth,
@@ -41,8 +36,6 @@ export const mapBoxPropsToStyles = (props: BoxProps, theme: DesignSystemTheme) =
         maxWidth: props.maxWidth,
         maxHeight: props.maxHeight,
         display: props.display,
-
-        // Flexbox
         flexDirection: props.flexDirection,
         flexWrap: props.flexWrap,
         justifyContent: props.justifyContent,
@@ -55,24 +48,18 @@ export const mapBoxPropsToStyles = (props: BoxProps, theme: DesignSystemTheme) =
         gap: props.gap,
         rowGap: props.rowGap,
         columnGap: props.columnGap,
-
-        // Positioning
         position: props.position,
         top: props.top,
         bottom: props.bottom,
         left: props.left,
         right: props.right,
         zIndex: props.zIndex,
-
-        // Visual
         backgroundColor,
         elevationToken,
         opacity: props.opacity,
         overflow: props.overflow,
-
-        // Borders
         borderWidth: props.borderWidth,
         borderColor,
-        borderRadius: props.borderRadius === 'full' ? 9999 : (typeof props.borderRadius === 'string' ? undefined : props.borderRadius), // Handle 'full' or numbers. Named sizes need mapping if defined in theme.
+        borderRadius: props.borderRadius === 'full' ? 9999 : (typeof props.borderRadius === 'string' ? undefined : props.borderRadius),
     };
 };

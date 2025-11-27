@@ -1,4 +1,3 @@
-// packages/design-system/src/components/Text/mapStyles.ts
 import { TypographyProps, DesignSystemTheme } from '../../types';
 
 export const mapTypographyPropsToStyles = (props: Omit<TypographyProps, 'children'>, theme: DesignSystemTheme) => {

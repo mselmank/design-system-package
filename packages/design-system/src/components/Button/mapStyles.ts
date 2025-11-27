@@ -1,4 +1,3 @@
-// packages/design-system/src/components/Button/mapStyles.ts
 import { ButtonProps, DesignSystemTheme, ColorTokens } from '../../types';
 
 export const mapButtonPropsToStyles = (props: ButtonProps, theme: DesignSystemTheme) => {
@@ -8,7 +7,6 @@ export const mapButtonPropsToStyles = (props: ButtonProps, theme: DesignSystemTh
     let backgroundColor = theme.colors.primaryMain;
     let textColor = theme.colors.textContrast;
 
-    // Explicit mapping to ensure type safety
     const getBackgroundColor = (): string => {
         switch (variant) {
             case 'primary':

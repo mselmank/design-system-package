@@ -53,7 +53,6 @@ export const LandingPage = () => {
 
     return (
         <div style={pageStyle}>
-            {/* Header */}
             <header style={{
                 padding: '40px',
                 display: 'flex',
@@ -87,7 +86,6 @@ export const LandingPage = () => {
                 </nav>
             </header>
 
-            {/* Hero Section */}
             <main style={{
                 flex: 1,
                 display: 'flex',
@@ -127,7 +125,6 @@ export const LandingPage = () => {
                     <Button label="VIEW COMPONENTS" variant="error" onPress={() => { }} />
                 </div>
 
-                {/* Stats */}
                 <div style={{
                     marginTop: '100px',
                     display: 'flex',
@@ -148,7 +145,6 @@ export const LandingPage = () => {
                 </div>
             </main>
 
-            {/* Footer */}
             <footer style={{
                 padding: '40px',
                 textAlign: 'center',

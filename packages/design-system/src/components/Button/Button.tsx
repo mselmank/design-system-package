@@ -1,4 +1,3 @@
-// packages/design-system/src/components/Button/Button.tsx
 import React from 'react';
 import { ButtonProps } from '../../types';
 import { useTheme } from '../../theme/ThemeContext';
@@ -16,11 +15,11 @@ export const Button: React.FC<ButtonProps> = (props) => {
         opacity: styles.opacity,
         border: 'none',
         cursor: props.disabled ? 'not-allowed' : 'pointer',
-        fontSize: '14px', // Tailwind text-sm/base
-        fontWeight: 600, // Tailwind font-semibold
+        fontSize: '14px',
+        fontWeight: 600,
         transition: 'all 0.2s ease',
         boxShadow: styles.boxShadow,
-        textTransform: 'none', // Modern look usually avoids uppercase
+        textTransform: 'none',
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',

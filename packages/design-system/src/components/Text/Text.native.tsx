@@ -1,4 +1,3 @@
-// packages/design-system/src/components/Text/Text.native.tsx
 import React from 'react';
 import { Text as RNText, StyleSheet } from 'react-native';
 import { TypographyProps } from '../../types';

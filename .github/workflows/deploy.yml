@@ -3,16 +3,14 @@ name: Deploy Web App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Cambia a 'master' si ese es tu branch principal
-  workflow_dispatch:  # Permite ejecutar manualmente desde GitHub
+      - main
+  workflow_dispatch:
 
-# Permisos necesarios para publicar en GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Solo permite un deployment a la vez
 concurrency:
   group: "pages"
   cancel-in-progress: false

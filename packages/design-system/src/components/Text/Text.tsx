@@ -13,5 +13,5 @@ export const Text: React.FC<TypographyProps> = ({ children, variant, ...props })
     const styles = mapTypographyPropsToStyles({ variant, ...props }, theme);
     const Tag = getSemanticTag(variant);
 
-    return <Tag style={{ ...styles, margin: 0, ...props.style }}>{children}</Tag>;
+    return <Tag style={{ ...styles, margin: 0, boxSizing: 'border-box', ...props.style }}>{children}</Tag>;
 };

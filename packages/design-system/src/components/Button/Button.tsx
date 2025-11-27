@@ -24,6 +24,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
         alignItems: 'center',
         justifyContent: 'center',
         minWidth: '100px',
+        boxSizing: 'border-box',
     };
 
     return (

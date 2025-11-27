@@ -188,7 +188,7 @@ export const LandingPage = () => {
 
         <div style={{ display: "flex", gap: "24px" }}>
           <Button label="START BUILDING" variant="success" onPress={() => {}} />
-          <Button label="VIEW COMPONENTS" variant="error" onPress={() => {}} />
+          <Button label="VIEW COMPONENTS" variant="error" onPress={() => { window.location.hash = '#components'; }} />
         </div>
 
         <div

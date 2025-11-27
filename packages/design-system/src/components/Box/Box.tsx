@@ -14,6 +14,7 @@ export const Box: React.FC<BoxProps> = ({ children, ...props }) => {
     const { elevationToken, ...otherStyles } = styles;
 
     const finalStyle: React.CSSProperties = {
+        boxSizing: 'border-box',
         ...otherStyles,
         ...elevationStyle,
     } as React.CSSProperties;

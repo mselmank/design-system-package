@@ -78,9 +78,7 @@ export const LandingPage = () => {
                 </div>
 
                 <nav style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
-                    <a style={navLinkStyle}>COMPONENTS</a>
-                    <a style={navLinkStyle}>DOCS</a>
-                    <a style={navLinkStyle}>DEMO</a>
+
                     <Button
                         label={theme.variant === 'light' ? 'DARK MODE' : 'LIGHT MODE'}
                         variant="secondary"

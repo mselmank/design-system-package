@@ -18,18 +18,18 @@ export const Button: React.FC<ButtonProps> = (props) => {
         backgroundColor: styles.backgroundColor,
         paddingVertical,
         paddingHorizontal,
-        borderRadius: 8,
+        borderRadius: 0,
         opacity: styles.opacity,
         alignItems: 'center' as const,
         justifyContent: 'center' as const,
         minWidth: 100,
-        // Shadow for iOS
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        // Elevation for Android
-        elevation: props.disabled ? 0 : 3,
+        // Retro "hard shadow" using borders
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
+        borderColor: theme.colors.textDefault,
+        // Remove default shadows/elevation
+        shadowColor: 'transparent',
+        elevation: 0,
     };
 
     const textStyle = {

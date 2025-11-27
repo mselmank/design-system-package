@@ -1,12 +1,15 @@
 import React from 'react';
 import { ThemeProvider, Box, Text, useTheme, Button, type ButtonVariant, type ColorTokens } from '@mselmank/design-system-package';
 
-const Section = ({ title, children }: { title: string, children: React.ReactNode }) => (
-  <section style={{ marginBottom: '40px', padding: '20px', border: '1px solid #eee', borderRadius: '8px' }}>
-    <h2 style={{ fontFamily: 'system-ui', fontSize: '20px', marginBottom: '16px', color: '#333' }}>{title}</h2>
-    {children}
-  </section>
-);
+const Section = ({ title, children }: { title: string, children: React.ReactNode }) => {
+  const { theme } = useTheme();
+  return (
+    <section style={{ marginBottom: '40px', padding: '20px', border: `1px solid ${theme.colors.textSecondary}`, borderRadius: '8px' }}>
+      <h2 style={{ fontFamily: 'system-ui', fontSize: '20px', marginBottom: '16px', color: theme.colors.textDefault }}>{title}</h2>
+      {children}
+    </section>
+  );
+};
 
 const Content = () => {
   const { toggleTheme, theme } = useTheme();
@@ -46,7 +49,7 @@ const Content = () => {
       <Section title="Layout Components (Box)">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ marginBottom: '10px' }}>
-            <code style={{ background: '#f4f4f4', padding: '4px 8px', borderRadius: '4px', color: '#333' }}>&lt;Box padding="md" elevation="z1" /&gt;</code>
+            <code style={{ background: theme.colors.secondaryLight, padding: '4px 8px', borderRadius: '4px', color: theme.colors.textDefault }}>&lt;Box padding="md" elevation="z1" /&gt;</code>
           </div>
 
           {/* Actual DS Component Usage */}

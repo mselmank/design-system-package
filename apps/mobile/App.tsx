@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { ThemeProvider, Box, Text, useTheme, Button, type ButtonVariant, type ColorTokens } from '@mselmank/design-system-package';
 
 // Section component for consistent styling
@@ -25,19 +26,21 @@ const Content = () => {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* Header Section */}
         <View style={styles.header}>
-          <View>
-            <Text variant="h1" color="textDefault" style={{ fontSize: 28, marginBottom: 4 }}>
+          <View style={styles.headerText}>
+            <Text variant="h1" color="textDefault" style={{ fontSize: 24, marginBottom: 4 }}>
               Fintual Design System
             </Text>
             <Text variant="bodyL" color="textSecondary">
               Mobile Component Showcase
             </Text>
           </View>
-          <Button
-            label={`${theme.variant === 'light' ? 'Dark' : 'Light'} Mode`}
-            variant="primary"
-            onPress={toggleTheme}
-          />
+          <View style={styles.headerButton}>
+            <Button
+              label={`${theme.variant === 'light' ? 'Dark' : 'Light'} Mode`}
+              variant="primary"
+              onPress={toggleTheme}
+            />
+          </View>
         </View>
 
         {/* Layout Section */}
@@ -121,9 +124,11 @@ const Content = () => {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <Content />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <Content />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 
@@ -137,10 +142,17 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     marginBottom: 24,
     paddingBottom: 16,
     gap: 12,
+  },
+  headerText: {
+    flex: 1,
+    flexShrink: 1,
+  },
+  headerButton: {
+    flexShrink: 0,
   },
   textRow: {
     flexDirection: 'row',

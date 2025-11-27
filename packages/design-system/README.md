@@ -193,4 +193,4 @@ import type {
 
 ## 📄 License
 
-MIT © [Fintual](https://github.com/mselmank/fintual-ds-monorepo)
+MIT ©

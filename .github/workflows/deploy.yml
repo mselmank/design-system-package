@@ -36,6 +36,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build design system package
+        run: |
+          cd packages/design-system
+          pnpm run build
+
       - name: Build web app
         run: |
           cd apps/web

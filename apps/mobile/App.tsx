@@ -1,94 +1,163 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { ThemeProvider, Box, Text, useTheme, Button, ButtonVariant, ColorTokens } from '@mselmank/design-system-package';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
+import { ThemeProvider, Box, Text, useTheme, Button, type ButtonVariant, type ColorTokens } from '@mselmank/design-system-package';
+
+// Section component for consistent styling
+const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+  <View style={{ marginBottom: 24, padding: 16, backgroundColor: 'rgba(128, 128, 128, 0.1)', borderRadius: 12 }}>
+    <Text variant="h1" color="textDefault" style={{ marginBottom: 8 }}>{title}</Text>
+    {children}
+  </View>
+);
 
 const Content = () => {
   const { toggleTheme, theme } = useTheme();
   const buttonVariants: ButtonVariant[] = ['primary', 'secondary', 'error', 'warning', 'info', 'success'];
   const textColors: Array<keyof ColorTokens> = ['textDefault', 'textSecondary', 'textSuccess', 'textError', 'textDisabled'];
 
+  // Page container style using theme colors
+  const containerStyle = {
+    backgroundColor: theme.colors.background,
+  };
+
   return (
-    <ScrollView contentContainerStyle={{ padding: 20 }}>
-      <Box padding="md" backgroundColor="background" elevation="z1">
-        <Text variant="h1" color="textDefault">Fintual Design System</Text>
-        <Text variant="bodyL" color="textSecondary">Mobile Demo - {theme.variant} mode</Text>
-
-        {/* LAYOUT SECTION */}
-        <Box margin="md" padding="sm" backgroundColor="surface" elevation="z2">
-          <Text variant="h1" color="textDefault">Layout</Text>
-          <Text variant="bodyL" color="textSecondary">Box Component Examples</Text>
-
-          <Box margin="sm" padding="md" backgroundColor="background" elevation="z1">
-            <Text variant="bodyL" color="textDefault">Box with background + z1 elevation</Text>
-          </Box>
-
-          <Box margin="sm" padding="md" backgroundColor="surface" elevation="z2">
-            <Text variant="bodyL" color="textDefault">Box with surface + z2 elevation</Text>
-          </Box>
-
-          <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
-            <View style={{ flex: 1 }}>
-              <Box padding="sm" backgroundColor="background" elevation="z1" display="flex" flexDirection="column">
-                <Text variant="bodyL" color="textDefault">Flex Box 1</Text>
-              </Box>
-            </View>
-            <View style={{ flex: 1 }}>
-              <Box padding="sm" backgroundColor="surface" elevation="z2" display="flex" flexDirection="column">
-                <Text variant="bodyL" color="textDefault">Flex Box 2</Text>
-              </Box>
-            </View>
+    <SafeAreaView style={[styles.safeArea, containerStyle]}>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Header Section */}
+        <View style={styles.header}>
+          <View>
+            <Text variant="h1" color="textDefault" style={{ fontSize: 28, marginBottom: 4 }}>
+              Fintual Design System
+            </Text>
+            <Text variant="bodyL" color="textSecondary">
+              Mobile Component Showcase
+            </Text>
           </View>
-        </Box>
+          <Button
+            label={`${theme.variant === 'light' ? 'Dark' : 'Light'} Mode`}
+            variant="primary"
+            onPress={toggleTheme}
+          />
+        </View>
 
-        {/* TYPOGRAPHY SECTION */}
-        <Box margin="md" padding="sm" backgroundColor="surface" elevation="z2">
-          <Text variant="h1" color="textDefault">Typography</Text>
-          <Text variant="bodyL" color="textSecondary">Text Color Variants</Text>
+        {/* Layout Section */}
+        <Section title="Layout Components (Box)">
+          <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
+            Box with padding, background, and elevation
+          </Text>
 
-          {textColors.map((color) => (
-            <Box key={color} margin="xs">
-              <Text variant="bodyL" color={color}>{color}: The quick brown fox jumps</Text>
+          {/* Actual DS Component Usage */}
+          <Box padding="md" backgroundColor="surface" elevation="z1" borderRadius="md" mb="md">
+            <Text variant="bodyL" color="textDefault">
+              I am a Box with padding, surface background, and z1 elevation.
+            </Text>
+          </Box>
+
+          <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12, marginTop: 8 }}>
+            Flexbox layout with gap
+          </Text>
+
+          {/* Flexbox Example */}
+          <Box display="flex" flexDirection="row" gap={12}>
+            <Box padding="md" backgroundColor="primaryLight" borderRadius="sm" flex={1}>
+              <Text variant="bodyL" color="textDefault">Flex Item 1</Text>
             </Box>
-          ))}
-        </Box>
+            <Box padding="md" backgroundColor="secondaryLight" borderRadius="sm" flex={1}>
+              <Text variant="bodyL" color="textDefault">Flex Item 2</Text>
+            </Box>
+          </Box>
+        </Section>
 
-        {/* BUTTONS SECTION */}
-        <Box margin="md" padding="sm" backgroundColor="surface" elevation="z2">
-          <Text variant="h1" color="textDefault">Buttons</Text>
-          <Text variant="bodyL" color="textSecondary">All Variants & Shades</Text>
-
-          {buttonVariants.map((variant) => (
-            <Box key={variant} margin="xs" display="flex" flexDirection="column">
-              <Text variant="bodyL" color="textDefault" style={{ marginBottom: 5, fontWeight: 'bold', textTransform: 'capitalize' }}>{variant}</Text>
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', gap: 10, marginBottom: 15 }}>
-                <View style={{ flex: 1 }}><Button label="Light" variant={variant} shade="light" /></View>
-                <View style={{ flex: 1 }}><Button label="Main" variant={variant} shade="main" /></View>
-                <View style={{ flex: 1 }}><Button label="Dark" variant={variant} shade="dark" /></View>
+        {/* Typography Section */}
+        <Section title="Typography (Text)">
+          <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
+            Text color variants
+          </Text>
+          <View style={{ gap: 8 }}>
+            {textColors.map((color) => (
+              <View key={color} style={styles.textRow}>
+                <Text variant="bodyL" color="textSecondary" style={{ width: 120, fontSize: 11, fontFamily: 'monospace' }}>
+                  {color}
+                </Text>
+                <Text variant="bodyL" color={color}>
+                  The quick brown fox jumps
+                </Text>
               </View>
-            </Box>
-          ))}
-        </Box>
+            ))}
+          </View>
+        </Section>
 
-        <Button label={`Toggle Theme (${theme.variant})`} variant="primary" onPress={toggleTheme} />
-      </Box>
-      <StatusBar style="auto" />
-    </ScrollView>
+        {/* Buttons Section */}
+        <Section title="Buttons">
+          <Text variant="bodyL" color="textSecondary" style={{ marginBottom: 12 }}>
+            All variants and shades
+          </Text>
+          <View style={{ gap: 16 }}>
+            {buttonVariants.map((variant) => (
+              <View key={variant} style={styles.buttonGroup}>
+                <Text variant="bodyL" color="textDefault" style={styles.variantLabel}>
+                  {variant.toUpperCase()}
+                </Text>
+                <View style={styles.buttonRow}>
+                  <View style={{ flex: 1 }}>
+                    <Button label="Light" variant={variant} shade="light" />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Button label="Main" variant={variant} shade="main" />
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    <Button label="Dark" variant={variant} shade="dark" />
+                  </View>
+                </View>
+              </View>
+            ))}
+          </View>
+        </Section>
+      </ScrollView>
+      <StatusBar style={theme.variant === 'light' ? 'dark' : 'light'} />
+    </SafeAreaView>
   );
 };
 
 export default function App() {
   return (
     <ThemeProvider>
-      <View style={styles.container}>
-        <Content />
-      </View>
+      <Content />
     </ThemeProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  safeArea: {
     flex: 1,
-    backgroundColor: '#fff',
+  },
+  scrollContent: {
+    padding: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 24,
+    paddingBottom: 16,
+    gap: 12,
+  },
+  textRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  buttonGroup: {
+    gap: 8,
+  },
+  variantLabel: {
+    fontSize: 11,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+    opacity: 0.7,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    gap: 8,
   },
 });
